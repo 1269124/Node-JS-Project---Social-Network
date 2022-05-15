@@ -1,0 +1,19 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd backend && nodemon app.ts",
+    "frontend-angular": "cd frontend/angular/movie && ng serve",
+    "dev-angular": "concurrently \"npm run server\" \"npm run frontend-angular\""
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1",
+    "nodemon": "^2.0.15",
+    "react": "^18.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
