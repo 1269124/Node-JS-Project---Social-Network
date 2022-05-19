@@ -1,9 +1,18 @@
 import {Router} from "express";
-import {createMovie, deleteMovie, getAllMovies, getMovie, updateMovie} from "../controllers/MovieController";
+import {
+    createMovie,
+    createUser,
+    deleteMovie,
+    getAllMovies,
+    getMovie,
+    updateMovie
+} from "../controllers/MovieController";
 
-export const movieRouter = Router();
-movieRouter.get("/getMovies", getAllMovies);
-movieRouter.get("/movie/:id", getMovie);
-movieRouter.post("/movie", createMovie);
-movieRouter.put("/movie/:id", updateMovie);
-movieRouter.delete("/movie/:id", deleteMovie);
+export const siteRouter = Router();
+siteRouter.get("/getMovies", getAllMovies);
+siteRouter.get("/movie/:id", getMovie);
+siteRouter.post("/movie", createMovie);
+siteRouter.put("/movie/:id", updateMovie);
+siteRouter.delete("/movie/:id", deleteMovie);
+siteRouter.post("/sn", createUser);
+
