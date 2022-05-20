@@ -5,10 +5,12 @@ import {MovieComponent} from "./components/movie/movie.component";
 import {LoginComponent} from "./components/login/login.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
+import {RegisterComponent} from "./components/register/register.component";
 
 const routes: Routes = [
   {path: "", redirectTo: "/login", pathMatch: "full"},
   {path: "login", component: LoginComponent},
+  {path: "register", component: RegisterComponent},
   {path: "movie", component: ListComponent, canActivate: [AuthenticationGuard]},
   {path: "movie/:id", component: MovieComponent, canActivate: [AuthenticationGuard]},
   {path: "**", component: NotFoundComponent, canActivate: [AuthenticationGuard]}

@@ -37,4 +37,8 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl("/movie")
   }
 
+  register() {
+    this.router.navigateByUrl("/register")
+  }
+
 }
