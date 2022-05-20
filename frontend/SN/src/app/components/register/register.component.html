@@ -1,1 +1,13 @@
-<p>register works!</p>
+<div class="form-container">
+  <form>
+    <label>Username</label>
+    <input type="text" placeholder="Username" minlength="3" maxlength="20"/>
+    <label>Password</label>
+    <input type="password" placeholder="Password"/>
+    <label>Email</label>
+    <input type="text" placeholder="Email"/>
+    <button (click)="registerUser()">Register</button>
+    <button (click)="return()">Login</button>
+  </form>
+</div>
+
