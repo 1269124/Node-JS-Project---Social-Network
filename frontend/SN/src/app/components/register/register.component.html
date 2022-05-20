@@ -1,11 +1,11 @@
 <div class="form-container">
-  <form>
+  <form [formGroup]="registerForm">
     <label>Username</label>
-    <input type="text" placeholder="Username" minlength="3" maxlength="20"/>
+    <input type="text" placeholder="Username" formControlName="username" class="form-control"/>
     <label>Password</label>
-    <input type="password" placeholder="Password"/>
+    <input type="password" placeholder="Password" formControlName="pasword" class="form-control"/>
     <label>Email</label>
-    <input type="text" placeholder="Email"/>
+    <input type="text" placeholder="Email" formControlName="email" class="form-control"/>
     <button (click)="registerUser()">Register</button>
     <button (click)="return()">Login</button>
   </form>
