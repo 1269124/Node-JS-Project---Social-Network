@@ -1,7 +1,6 @@
 import {Request, Response} from "express";
 import {MovieModel} from "../models/MovieModel";
 import {CreateMovieInput} from "../types/CreateMovieInput";
-import {CreateUserInput} from "../types/CreateUserInput";
 
 const movieModel = new MovieModel()
 
@@ -66,20 +65,6 @@ export const deleteMovie = async (req: Request, res: Response) => {
     } catch (e) {
         res.status(403).send({
             message: "Failed to delete movie"
-        })
-    }
-}
-
-export const createUser = async (req: Request, res: Response) => {
-    try {
-        const createUserInput: CreateUserInput = req.body;
-        await movieModel.createUser(createUserInput);
-        res.send({
-            message: "Success"
-        })
-    } catch (e) {
-        res.status(403).send({
-            message: "Create not successful"
         })
     }
 }

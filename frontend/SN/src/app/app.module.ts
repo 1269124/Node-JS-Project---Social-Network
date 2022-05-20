@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthguardService} from "./services/authguard.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     MovieComponent,
     LoginComponent,
     NotFoundComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,

@@ -1,6 +1,6 @@
 import {DB} from "../core/DB";
-import {Movie} from "../types/Movie";
 import {User} from "../types/Uset";
+import {CreateUserInput} from "../types/CreateUserInput";
 
 export class UserModel {
     private conn;
@@ -13,5 +13,15 @@ export class UserModel {
         const [rows] = await this.conn.query("" +
             "SELECT * FROM `users` WHERE id = ?", [id]);
         return rows;
+    }
+
+    async createUser(createUserInput: CreateUserInput): Promise<boolean> {
+        await this.conn.execute("INSERT INTO `users`(username, password, email)" +
+            "VALUES (?, ?, ?)", [
+            createUserInput.username,
+            createUserInput.password,
+            createUserInput.email
+        ]);
+        return true;
     }
 }

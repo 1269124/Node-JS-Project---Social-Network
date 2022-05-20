@@ -1,7 +1,6 @@
 import {DB} from "../core/DB";
 import {Movie} from "../types/Movie";
 import {CreateMovieInput} from "../types/CreateMovieInput";
-import {CreateUserInput} from "../types/CreateUserInput";
 
 export class MovieModel {
     private conn;
@@ -48,17 +47,6 @@ export class MovieModel {
 
     async deleteMovie(id: number): Promise<boolean> {
         await this.conn.execute("DELETE FROM `movies` WHERE id = ?", [id]);
-        return true;
-    }
-
-    async createUser(createUserInput: CreateUserInput): Promise<boolean> {
-        await this.conn.execute("INSERT INTO `users`(username, password, email, birthdate)" +
-            "VALUES (?, ?, ?, ?)", [
-            createUserInput.username,
-            createUserInput.password,
-            createUserInput.email,
-            createUserInput.birthdate
-        ]);
         return true;
     }
 }
