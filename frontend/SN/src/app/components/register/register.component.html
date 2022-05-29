@@ -1,13 +1,20 @@
 <div class="form-container">
-  <form [formGroup]="registerForm">
-    <label>Username</label>
-    <input type="text" placeholder="Username" formControlName="username" class="form-control"/>
-    <label>Password</label>
-    <input type="password" placeholder="Password" formControlName="pasword" class="form-control"/>
-    <label>Email</label>
-    <input type="text" placeholder="Email" formControlName="email" class="form-control"/>
-    <button (click)="registerUser()">Register</button>
-    <button (click)="return()">Login</button>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <label>Username</label>
+      <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Username"/>
+
+
+      <label >Password</label>
+      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Password"/>
+
+
+      <label >Email</label>
+      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Email"/>
+
+      <button>Register</button>
+
+      <button routerLink="/login">Cancel</button>
   </form>
 </div>
 

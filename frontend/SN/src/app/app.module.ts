@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AuthguardService} from "./services/authguard.service";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -27,7 +27,8 @@ import { RegisterComponent } from './components/register/register.component';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
   providers: [AuthguardService],
   bootstrap: [AppComponent]
