@@ -10,6 +10,6 @@ export class AuthguardService {
   constructor() { }
 
   userExists() {
-    return !!localStorage.getItem("loggedUser")
+    return !!localStorage.getItem("loggedUser") && !!localStorage.getItem("accessToken");
   }
 }

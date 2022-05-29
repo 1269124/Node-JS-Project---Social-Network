@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     // token
     // redirect
     localStorage.setItem("loggedUser", JSON.stringify(this.user));
-    localStorage.setItem("accessToken", this.accessToken);
     this.generateToken(10);
-    /*this.accessToken = this.result;*/
-    console.log(this.result)
+    this.accessToken = this.result;
+    console.log(this.result);
+    localStorage.setItem("accessToken", this.accessToken);
     this.authService.isLoggedIn.next(true);
-    this.router.navigateByUrl("/movie")
+    this.router.navigateByUrl("/movie");
   }
 
   generateToken(length: number){
