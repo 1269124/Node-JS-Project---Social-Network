@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthguardService} from "../../services/authguard.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -16,13 +17,15 @@ export class RegisterComponent implements OnInit {
   });
   submitted = false;
   loading = false;
+  user: any;
 
   constructor(private router: Router,
               private authService: AuthguardService,
-              private fb: FormBuilder) {}
+              private fb: FormBuilder,
+              private http: HttpClient) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
 
   get f(): { [key: string]: AbstractControl} {
     return this.registerForm.controls;
@@ -40,22 +43,18 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    /*this.userService.register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });*/
-    /*this.router.navigateByUrl("/login")*/
+    /*this.getUser(this.registerForm.controls['username'].value)*/
   }
+
+  /*getUser(username: string){
+    this.http
+      .get(`http://localhost:3000/api/register/}`,{})
+      .subscribe(res => {
+        this.user = res;
+      })
+  }*/
 
   return(){
     this.router.navigateByUrl("/login")
   }
-
 }

@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     username: "dido"
   }
   private accessToken: string = "abc123"
+  private randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  private result = '';
 
   constructor(
     private router: Router,
@@ -33,8 +35,18 @@ export class LoginComponent implements OnInit {
     // redirect
     localStorage.setItem("loggedUser", JSON.stringify(this.user));
     localStorage.setItem("accessToken", this.accessToken);
+    this.generateToken(10);
+    /*this.accessToken = this.result;*/
+    console.log(this.result)
     this.authService.isLoggedIn.next(true);
     this.router.navigateByUrl("/movie")
+  }
+
+  generateToken(length: number){
+    for (let i = 0; i < length; i++ ) {
+      this.result += this.randomChars.charAt(Math.floor(Math.random() * this.randomChars.length));
+    }
+    return this.result;
   }
 
   register() {
