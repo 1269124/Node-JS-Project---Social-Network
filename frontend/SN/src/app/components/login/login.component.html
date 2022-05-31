@@ -1,10 +1,11 @@
 <div class="form-container">
-  <form>
+  <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
     <label>Username</label>
-    <input type="text" placeholder="Username"/>
+    <input type="text" formControlName="username" placeholder="Username"/>
     <label>Password</label>
-    <input type="password" placeholder="Password"/>
-    <button (click)="login()">Login</button>
+    <input type="password" formControlName="password" placeholder="Password"/>
+    <button>Login</button>
     <button (click)="register()">Register</button>
+    <div *ngIf="invalid==true" class="failure">Incorrect username or password</div>
   </form>
 </div>

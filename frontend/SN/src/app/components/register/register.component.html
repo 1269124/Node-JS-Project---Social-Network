@@ -2,19 +2,21 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
       <label>Username</label>
-      <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Username"/>
+      <input type="text" formControlName="username" placeholder="Username"/>
 
 
       <label >Password</label>
-      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Password"/>
+      <input type="password" formControlName="password" placeholder="Password"/>
 
 
       <label >Email</label>
-      <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted}" placeholder="Email"/>
+      <input type="text" formControlName="email" placeholder="Email"/>
 
       <button>Register</button>
 
       <button (click)="return()">Cancel</button>
+
+    <div *ngIf="invalid==true" class="failure">Invalid registration data</div>
   </form>
 </div>
 

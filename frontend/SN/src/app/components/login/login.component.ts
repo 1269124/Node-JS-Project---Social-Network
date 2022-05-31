@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthguardService} from "../../services/authguard.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,19 @@ export class LoginComponent implements OnInit {
     id: 4,
     username: "dido"
   }
+  loginForm: FormGroup = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
   private accessToken: string = "abc123"
   private randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   private result = '';
+  invalid = false;
 
   constructor(
     private router: Router,
-    private authService: AuthguardService
+    private authService: AuthguardService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -27,19 +34,32 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
+  onSubmit() {
     // username
     // password
     // API login
     // token
     // redirect
-    localStorage.setItem("loggedUser", JSON.stringify(this.user));
-    this.generateToken(10);
-    this.accessToken = this.result;
-    console.log(this.result);
-    localStorage.setItem("accessToken", this.accessToken);
-    this.authService.isLoggedIn.next(true);
-    this.router.navigateByUrl("/movie");
+    if (this.loginForm.invalid) {
+      this.invalid = true;
+      console.log("failed invalid")
+      return;
+    }
+
+    if (this.loginForm.controls['username'].value == this.user.username){
+      localStorage.setItem("loggedUser", JSON.stringify(this.user));
+      this.generateToken(10);
+      this.accessToken = this.result;
+      console.log(this.result);
+      localStorage.setItem("accessToken", this.accessToken);
+      this.authService.isLoggedIn.next(true);
+      this.router.navigateByUrl("/movie");
+      return;
+    }
+
+    this.invalid = true;
+    console.log("failed wrong")
+    return;
   }
 
   generateToken(length: number){

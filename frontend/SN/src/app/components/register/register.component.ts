@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthguardService} from "../../services/authguard.service";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {invalid} from "@angular/compiler/src/render3/view/util";
 
 @Component({
   selector: 'app-register',
@@ -15,33 +16,33 @@ export class RegisterComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
     email: ['', [Validators.required, Validators.email]]
   });
-  submitted = false;
-  loading = false;
-  user: any;
+  private submitted = false;
+  invalid = false;
+  private user: any;
 
   constructor(private router: Router,
               private authService: AuthguardService,
               private fb: FormBuilder,
               private http: HttpClient) {}
 
-  ngOnInit() {}
-
-
-  get f(): { [key: string]: AbstractControl} {
-    return this.registerForm.controls;
+  ngOnInit(): void {
+    if (this.authService.userExists()) {
+      this.router.navigateByUrl("/movie");
+    }
   }
+
+  /*get f(): { [key: string]: AbstractControl} {
+    return this.registerForm.controls;
+  }*/
 
   onSubmit(){
     this.submitted = true;
     if (this.registerForm.invalid) {
+      this.invalid = true;
       console.log("failed")
       return;
     }
-    console.log(JSON.stringify(this.registerForm.controls['username'].value));
-
-    if (this.registerForm.invalid) {
-      return;
-    }
+    console.log(JSON.stringify(this.registerForm.controls['username'].value + ' ' + this.registerForm.controls['password'].value + ' ' + this.registerForm.controls['email'].value));
 
     /*this.getUser(this.registerForm.controls['username'].value)*/
   }
