@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ListComponent implements OnInit {
   public movies: any = [];
-
+  public user: any;
   constructor(
     private http: HttpClient
   ) {
@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 
   getMovies() {
     const accessToken = localStorage.getItem('accessToken')!;
-    this.http.get("http://localhost:8083/api/getMovies", {
+    this.http.get("http://localhost:8085/api/getMovies", {
       headers: {
         authorization: accessToken
       }
@@ -28,5 +28,4 @@ export class ListComponent implements OnInit {
         this.movies = res;
       })
   }
-
 }

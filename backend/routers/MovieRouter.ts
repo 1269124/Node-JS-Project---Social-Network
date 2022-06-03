@@ -15,5 +15,5 @@ siteRouter.post("/movie", createMovie);
 siteRouter.put("/movie/:id", updateMovie);
 siteRouter.delete("/movie/:id", deleteMovie);
 siteRouter.post("/register", createUser);
-siteRouter.get("/register", getUser);
+siteRouter.get("/register:username", getUser);
 

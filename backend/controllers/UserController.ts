@@ -20,8 +20,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
     try {
-        const username = parseInt(req.params.username);
-        res.send(await userModel.getUser(username));
+        res.send(await userModel.getUser());
     } catch (e) {
         res.status(403).send({
             message: "No user found"

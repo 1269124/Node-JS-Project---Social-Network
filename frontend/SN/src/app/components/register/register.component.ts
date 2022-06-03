@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   private submitted = false;
   invalid = false;
   private user: any;
+  user1: any;
 
   constructor(private router: Router,
               private authService: AuthguardService,
@@ -46,14 +47,6 @@ export class RegisterComponent implements OnInit {
 
     /*this.getUser(this.registerForm.controls['username'].value)*/
   }
-
-  /*getUser(username: string){
-    this.http
-      .get(`http://localhost:3000/api/register/}`,{})
-      .subscribe(res => {
-        this.user = res;
-      })
-  }*/
 
   return(){
     this.router.navigateByUrl("/login")

@@ -35,11 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // username
-    // password
-    // API login
-    // token
-    // redirect
     if (this.loginForm.invalid) {
       this.invalid = true;
       console.log("failed invalid")

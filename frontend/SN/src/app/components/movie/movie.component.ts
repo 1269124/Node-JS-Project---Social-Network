@@ -3,7 +3,8 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import {FileUploadService} from "../../services/file-upload.service";
+
 
 @Component({
   selector: 'app-movie',
@@ -30,7 +31,7 @@ export class MovieComponent {
 
   ngOnInit() {
     this.movie = this.getMovie(this.path);
-    this.fileUploadService.fileUploaded.subscribe(path => {
+    this.fileUploadService.fileUploaded.subscribe((path: string) => {
       if (path) {
         console.log({path})
         this.updateMovieThumbnail(path);
@@ -40,10 +41,10 @@ export class MovieComponent {
 
   public getImage(movie: any): Observable<SafeResourceUrl> {
     return this.http
-      .get(`http://localhost:8083/api/image/${movie.thumbnail}`, {
+      .get(`http://localhost:8085/api/image/${movie.thumbnail}`, {
         responseType: 'blob',
         headers: {
-          authorization: localStorage.getItem("accessToken")!!
+          /*authorization: localStorage.getItem("accessToken")!!*/
         }
       })
       .pipe(
@@ -56,9 +57,9 @@ export class MovieComponent {
 
   private getMovie(path: string) {
     this.http
-      .get(`http://localhost:8083/api/movie/${path}`,{
+      .get(`http://localhost:8085/api/movie/${path}`,{
         headers: {
-          authorization: localStorage.getItem("accessToken")!
+          /*authorization: localStorage.getItem("accessToken")!*/
         }
       })
       .subscribe(res => {
@@ -73,11 +74,11 @@ export class MovieComponent {
 
   private updateMovieThumbnail(path: string) {
     this.http
-      .put(`http://localhost:8083/api/movie/${this.path}`,{
+      .put(`http://localhost:8085/api/movie/${this.path}`,{
         thumbnail: path
       }, {
         headers: {
-          authorization: localStorage.getItem("accessToken")!
+          /*authorization: localStorage.getItem("accessToken")!*/
         }
       })
       .subscribe(res => {

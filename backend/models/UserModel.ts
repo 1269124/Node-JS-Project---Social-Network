@@ -9,9 +9,13 @@ export class UserModel {
         this.conn = new DB().conn;
     }
 
-    async getUser(username): Promise<User[]> {
+    /*async getUser(username): Promise<User[]> {
         const [rows] = await this.conn.query("" +
             "SELECT * FROM `users` WHERE username = ?", [username]);
+        return rows;
+    }*/
+    async getUser():Promise<User[]>{
+        const [rows] = await this.conn.query("SELECT * FROM `users`");
         return rows;
     }
 

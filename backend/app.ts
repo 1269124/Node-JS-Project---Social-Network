@@ -12,6 +12,6 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use("/api", auth, siteRouter);
 app.use("/api", auth, imageRouter);
-app.listen(8083, () => {
+app.listen(8085, () => {
     console.log("Backend Started")
 })
