@@ -40,7 +40,7 @@ export class MovieComponent {
 
   public getImage(movie: any): Observable<SafeResourceUrl> {
     return this.http
-      .get(`http://localhost:3000/api/image/${movie.thumbnail}`, {
+      .get(`http://localhost:8083/api/image/${movie.thumbnail}`, {
         responseType: 'blob',
         headers: {
           authorization: localStorage.getItem("accessToken")!!
@@ -56,7 +56,7 @@ export class MovieComponent {
 
   private getMovie(path: string) {
     this.http
-      .get(`http://localhost:3000/api/movie/${path}`,{
+      .get(`http://localhost:8083/api/movie/${path}`,{
         headers: {
           authorization: localStorage.getItem("accessToken")!
         }
@@ -73,7 +73,7 @@ export class MovieComponent {
 
   private updateMovieThumbnail(path: string) {
     this.http
-      .put(`http://localhost:3000/api/movie/${this.path}`,{
+      .put(`http://localhost:8083/api/movie/${this.path}`,{
         thumbnail: path
       }, {
         headers: {

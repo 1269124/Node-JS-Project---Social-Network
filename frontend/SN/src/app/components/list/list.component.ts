@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
 
   getMovies() {
     const accessToken = localStorage.getItem('accessToken')!;
-    this.http.get("http://localhost:3000/api/getMovies", {
+    this.http.get("http://localhost:8083/api/getMovies", {
       headers: {
         authorization: accessToken
       }
