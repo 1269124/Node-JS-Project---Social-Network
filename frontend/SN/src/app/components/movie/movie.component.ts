@@ -44,7 +44,7 @@ export class MovieComponent {
       .get(`http://localhost:8085/api/image/${movie.thumbnail}`, {
         responseType: 'blob',
         headers: {
-          /*authorization: localStorage.getItem("accessToken")!!*/
+          authorization: localStorage.getItem("accessToken")!!
         }
       })
       .pipe(
@@ -59,7 +59,7 @@ export class MovieComponent {
     this.http
       .get(`http://localhost:8085/api/movie/${path}`,{
         headers: {
-          /*authorization: localStorage.getItem("accessToken")!*/
+          authorization: localStorage.getItem("accessToken")!
         }
       })
       .subscribe(res => {
@@ -78,7 +78,7 @@ export class MovieComponent {
         thumbnail: path
       }, {
         headers: {
-          /*authorization: localStorage.getItem("accessToken")!*/
+          authorization: localStorage.getItem("accessToken")!
         }
       })
       .subscribe(res => {
